@@ -1,0 +1,74 @@
+body
+{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(46,0,75,1) 71%);
+    margin: 0;
+    padding: 0;
+}
+
+.centered {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: -200px;
+    border: 1px solid#690ca4;
+}
+
+.Box{
+    background:white	;
+    height: 100%;
+    padding: 2%;
+}
+
+.Title
+{
+    height:35%;
+}
+  
+.resthigh
+{
+    height: 65%;
+}
+
+
+h1{
+    text-align: center;
+    font-weight: bold;
+    color: purple;
+    font-size: 300%; 
+    margin-top: 5%;
+}
+
+
+input{
+    font-size: 175%;
+    padding: 12px;
+    margin-right: 5%;
+    width: 88%;
+    margin-left: 3%;
+}
+
+#input2{
+    margin-top: 4%;
+}
+
+a, button{
+    margin-left: 3%;
+    margin-top: 4%;
+    background-color: #690ca4;
+    border: none;
+    color: white;
+    padding: 32px;
+    display: inline-block;
+    font-size: 24px;
+    height: 35px;
+    width: 35%;
+    cursor: pointer;
+    margin-bottom: 4%;
+    text-align: center;
+    text-decoration: none;
+    
+}
