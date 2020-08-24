@@ -70,8 +70,6 @@ function Create() {
     function createUser() {
         if (emailValidate()) {
             if (passwordValidate()) {
-                console.log(inputs.emailInput);
-                console.log(inputs.passwordInput);
                 fetch("https://localhost:44337/controller/users/adduser", requestOptions)
                     .then(function (x) { return x.text(); }).then(function (y) { return onResponse(y); });
             }

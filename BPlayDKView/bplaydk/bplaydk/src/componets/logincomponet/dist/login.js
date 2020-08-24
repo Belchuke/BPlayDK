@@ -35,6 +35,26 @@ function Login() {
         setInputs(__assign(__assign({}, inputs), { passwordInput: e }));
     }
     //#endregion
+    var requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            Email: inputs.emailInput,
+            Password: inputs.passwordInput
+        })
+    };
+    function onResponse(rep) {
+        if (rep == "User Exist") {
+            // If it is correct
+        }
+        else {
+            alert("Email or password was incorrect try again");
+        }
+    }
+    function tryLogin() {
+        fetch("https://localhost:44337/controller/users/adduser", requestOptions)
+            .then(function (x) { return x.text(); }).then(function (y) { return onResponse(y); });
+    }
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement("div", { className: "centered" },
             react_1["default"].createElement("div", { className: "Box" },
@@ -43,7 +63,8 @@ function Login() {
                 react_1["default"].createElement("div", null,
                     react_1["default"].createElement("input", { placeholder: "Email", value: inputs.emailInput, onChange: function (e) { return handleEmail(e.target.value); } }),
                     react_1["default"].createElement("input", { placeholder: "Password", type: "password", value: inputs.passwordInput, onChange: function (e) { return handlePassword(e.target.value); }, id: "input2" }),
-                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/createUser" }, "Create Account")))),
+                    react_1["default"].createElement(react_router_dom_1.Link, { to: "/createUser" }, "Create Account"),
+                    react_1["default"].createElement("button", null, "Log In")))),
         react_1["default"].createElement("br", null)));
 }
 exports["default"] = Login;

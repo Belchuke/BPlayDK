@@ -103,8 +103,6 @@ function Create()
     {
       if (passwordValidate())
       {
-        console.log(inputs.emailInput);
-        console.log(inputs.passwordInput);
         fetch("https://localhost:44337/controller/users/adduser", requestOptions)
           .then(x => x.text()).then(y => onResponse(y));
         }
