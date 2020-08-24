@@ -1,0 +1,64 @@
+#pagewrapper{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#sidemenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #290142;
+    width: 200px;
+    height: 98.4%;
+    border: 1px solid;
+    padding: 5px;
+    box-shadow: 2px 0px black;
+}
+
+#mainbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#topbar{
+    height: 70px;
+    width: 100%;
+    background-color: #290142;
+    box-sizing: border-box;
+    border: 1px solid;
+    padding: 5px;
+    box-shadow: 0px 2px black;
+}
+
+#view{
+
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 102%;
+    margin-bottom: 20%;
+}
+
+h2{
+    margin-left: 10%;
+    font-weight: bold;
+    color:whitesmoke;
+    font-size: 125%; 
+    margin-top: 2%;
+}
+
+h3{
+    margin-left: 10%;
+    font-weight: bold;
+    color:whitesmoke;
+    font-size: 125%; 
+    margin-top: 2%;
+    position:absolute;
+    bottom:20px;
+}

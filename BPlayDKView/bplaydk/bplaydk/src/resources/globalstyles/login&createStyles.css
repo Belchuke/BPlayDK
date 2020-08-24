@@ -26,6 +26,12 @@
     height: 65%;
 }
 
+#imgstyle{
+    margin-bottom: 0px;
+    width: 102%;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 h1{
     text-align: center;

@@ -15,6 +15,7 @@ var react_1 = require("react");
 var react_router_dom_1 = require("react-router-dom");
 require("../../resources/globalstyles/bodystyle.css");
 require("../../resources/globalstyles/login&createStyles.css");
+var react_router_dom_2 = require("react-router-dom");
 function Login() {
     // Define component state
     var _a = react_1.useState({
@@ -51,20 +52,24 @@ function Login() {
             alert("Email or password was incorrect try again");
         }
     }
+    var history = react_router_dom_2.useHistory();
     function tryLogin() {
-        fetch("https://localhost:44337/controller/users/adduser", requestOptions)
-            .then(function (x) { return x.text(); }).then(function (y) { return onResponse(y); });
+        //fetch("https://localhost:44337/controller/users/adduser", requestOptions)
+        //  .then(x => x.text()).then(y => onResponse(y));
+        // apphistory?.push("/login");
+        history.push("/login");
     }
+    var logo = require('../../resources/Images/BPlayDKLogo.png');
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement("div", { className: "centered" },
             react_1["default"].createElement("div", { className: "Box" },
                 react_1["default"].createElement("div", { className: "title", style: { marginBottom: 25 } },
-                    react_1["default"].createElement("h1", null, "BPlay")),
+                    react_1["default"].createElement("img", { alt: 'logo', src: String(logo), id: "imgstyle" })),
                 react_1["default"].createElement("div", null,
                     react_1["default"].createElement("input", { placeholder: "Email", value: inputs.emailInput, onChange: function (e) { return handleEmail(e.target.value); } }),
                     react_1["default"].createElement("input", { placeholder: "Password", type: "password", value: inputs.passwordInput, onChange: function (e) { return handlePassword(e.target.value); }, id: "input2" }),
                     react_1["default"].createElement(react_router_dom_1.Link, { to: "/createUser" }, "Create Account"),
-                    react_1["default"].createElement("button", null, "Log In")))),
+                    react_1["default"].createElement("button", { onClick: function () { return tryLogin(); } }, "Log In")))),
         react_1["default"].createElement("br", null)));
 }
 exports["default"] = Login;

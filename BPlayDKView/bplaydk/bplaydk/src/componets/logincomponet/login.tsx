@@ -3,11 +3,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import '../../resources/globalstyles/bodystyle.css';
 import '../../resources/globalstyles/login&createStyles.css';
 import { IAuser } from "../../interfaces/auserinterface";
+import { useHistory } from "react-router-dom";
 
 function Login()
 {
@@ -63,20 +65,24 @@ function Login()
     }
   }
 
+  const history = useHistory();
 
   function tryLogin()
   {
-    fetch("https://localhost:44337/controller/users/adduser", requestOptions)
-    .then(x => x.text()).then(y => onResponse(y));
+    //fetch("https://localhost:44337/controller/users/adduser", requestOptions)
+    //  .then(x => x.text()).then(y => onResponse(y));
+   // apphistory?.push("/login");
+    history.push("/login");
   }
 
+  const logo = require('../../resources/Images/BPlayDKLogo.png');
 
   return (
     <div>
       <div className="centered">
         <div className="Box">
           <div className="title" style={{marginBottom: 25}}>
-            <h1>BPlay</h1>
+            <img alt='logo' src={String(logo)} id="imgstyle"></img>
           </div>
 
           <div>
@@ -84,7 +90,7 @@ function Login()
             <input placeholder="Password" type="password" value={inputs.passwordInput} onChange={(e) => handlePassword(e.target.value)} id="input2"></input>   
             <Link to="/createUser">Create Account
             </Link>
-            <button>Log In</button>
+            <button onClick={() => tryLogin()}>Log In</button>
           </div>
         </div>
       </div>
