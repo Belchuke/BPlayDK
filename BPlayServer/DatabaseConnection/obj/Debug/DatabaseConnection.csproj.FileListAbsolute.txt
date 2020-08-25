@@ -1,0 +1,12 @@
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\DatabaseConnection.exe.config
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\DatabaseConnection.exe
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\EntityFramework.dll
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\EntityFramework.xml
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\obj\Debug\DatabaseConnection.csprojAssemblyReference.cache
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\obj\Debug\DatabaseConnection.csproj.CoreCompileInputs.cache
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\obj\Debug\DatabaseConnection.csproj.CopyComplete
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\obj\Debug\DatabaseConnection.exe
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\DatabaseConnection\obj\Debug\DatabaseConnection.pdb

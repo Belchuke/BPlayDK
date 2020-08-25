@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BPlayDKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AMovie">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MovieYear" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Released" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Runtime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Genre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Writer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Actors" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Plot" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MovieLanguage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Award" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Poster" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Metascore" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="imdbRating" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="imdbVotes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="imdbID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MovieType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Response" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ServerPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AUserSeens" Relationship="Self.FK_AUserSeen_AMovie" FromRole="AMovie" ToRole="AUserSeen" />
+    <NavigationProperty Name="Cinemas" Relationship="Self.FK_Cinema_AMovie" FromRole="AMovie" ToRole="Cinema" />
+    <NavigationProperty Name="MoviePlayings" Relationship="Self.FK_MoviePlaying_AMovie" FromRole="AMovie" ToRole="MoviePlaying" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_AMovie" FromRole="AMovie" ToRole="Reservation" />
+    <NavigationProperty Name="Reservations1" Relationship="Self.FK_Reservation_Seats" FromRole="AMovie" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="AUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AUserPBSID" Type="Int32" />
+    <Property Name="ReservationID" Type="Int32" />
+    <Property Name="AUserTypeID" Type="Int32" />
+    <NavigationProperty Name="AUser_Previous_Bought_Snacks" Relationship="Self.FK_AUser_AUser_Previous_Bought_Snacks" FromRole="AUser" ToRole="AUser_Previous_Bought_Snacks" />
+    <NavigationProperty Name="AUserType" Relationship="Self.FK_AUser_AUserType" FromRole="AUser" ToRole="AUserType" />
+    <NavigationProperty Name="Reservation" Relationship="Self.FK_AUser_Reservation" FromRole="AUser" ToRole="Reservation" />
+    <NavigationProperty Name="AUserSeens" Relationship="Self.FK_AUserSeen_AUser" FromRole="AUser" ToRole="AUserSeen" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_AUser" FromRole="AUser" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="AUser_Previous_Bought_Snacks">
+    <Key>
+      <PropertyRef Name="AUserPBSID" />
+    </Key>
+    <Property Name="AUserPBSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SnacksID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="AUsers" Relationship="Self.FK_AUser_AUser_Previous_Bought_Snacks" FromRole="AUser_Previous_Bought_Snacks" ToRole="AUser" />
+    <NavigationProperty Name="Snacks_Selling" Relationship="Self.FK_AUser_Previous_Bought_Snacks_Snacks_Selling" FromRole="AUser_Previous_Bought_Snacks" ToRole="Snacks_Selling" />
+  </EntityType>
+  <EntityType Name="AUserSeen">
+    <Key>
+      <PropertyRef Name="AUserSeenID" />
+    </Key>
+    <Property Name="AUserSeenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="MovieID" Type="Int32" />
+    <NavigationProperty Name="AMovie" Relationship="Self.FK_AUserSeen_AMovie" FromRole="AUserSeen" ToRole="AMovie" />
+    <NavigationProperty Name="AUser" Relationship="Self.FK_AUserSeen_AUser" FromRole="AUserSeen" ToRole="AUser" />
+  </EntityType>
+  <EntityType Name="AUserType">
+    <Key>
+      <PropertyRef Name="AUserTypeID" />
+    </Key>
+    <Property Name="AUserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AUsers" Relationship="Self.FK_AUser_AUserType" FromRole="AUserType" ToRole="AUser" />
+  </EntityType>
+  <EntityType Name="Bought_Snacks">
+    <Key>
+      <PropertyRef Name="BoughtSnacksID" />
+    </Key>
+    <Property Name="BoughtSnacksID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SnacksID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Bought_Snacks" FromRole="Bought_Snacks" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="Cinema">
+    <Key>
+      <PropertyRef Name="CinemaID" />
+    </Key>
+    <Property Name="CinemaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieID" Type="Int32" />
+    <Property Name="MoviePlayingID" Type="Int32" />
+    <Property Name="AmountOfSeats" Type="Int32" />
+    <NavigationProperty Name="AMovie" Relationship="Self.FK_Cinema_AMovie" FromRole="Cinema" ToRole="AMovie" />
+    <NavigationProperty Name="MoviePlaying" Relationship="Self.FK_Cinema_MoviePlaying" FromRole="Cinema" ToRole="MoviePlaying" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Cinema" FromRole="Cinema" ToRole="Reservation" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK_Seats_Cinema" FromRole="Cinema" ToRole="Seats" />
+  </EntityType>
+  <EntityType Name="MoviePlaying">
+    <Key>
+      <PropertyRef Name="MovieplayingID" />
+    </Key>
+    <Property Name="MovieplayingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SeatsID" Type="Int32" />
+    <Property Name="MovieID" Type="Int32" />
+    <Property Name="DatePlaying" Type="DateTime" Precision="3" />
+    <Property Name="TimePlaying" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AMovie" Relationship="Self.FK_MoviePlaying_AMovie" FromRole="MoviePlaying" ToRole="AMovie" />
+    <NavigationProperty Name="Cinemas" Relationship="Self.FK_Cinema_MoviePlaying" FromRole="MoviePlaying" ToRole="Cinema" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK_MoviePlaying_Seats" FromRole="MoviePlaying" ToRole="Seats" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK_Seats_MoviePlaying" FromRole="MoviePlaying" ToRole="Seats" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="CinemaID" Type="Int32" />
+    <Property Name="SeatsID" Type="Int32" />
+    <Property Name="BoughtSnacksID" Type="Int32" />
+    <NavigationProperty Name="AMovie" Relationship="Self.FK_Reservation_AMovie" FromRole="Reservation" ToRole="AMovie" />
+    <NavigationProperty Name="AMovie1" Relationship="Self.FK_Reservation_Seats" FromRole="Reservation" ToRole="AMovie" />
+    <NavigationProperty Name="AUsers" Relationship="Self.FK_AUser_Reservation" FromRole="Reservation" ToRole="AUser" />
+    <NavigationProperty Name="AUser" Relationship="Self.FK_Reservation_AUser" FromRole="Reservation" ToRole="AUser" />
+    <NavigationProperty Name="Bought_Snacks" Relationship="Self.FK_Reservation_Bought_Snacks" FromRole="Reservation" ToRole="Bought_Snacks" />
+    <NavigationProperty Name="Cinema" Relationship="Self.FK_Reservation_Cinema" FromRole="Reservation" ToRole="Cinema" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="SeatsID" />
+    </Key>
+    <Property Name="SeatsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CinemaID" Type="Int32" />
+    <Property Name="MoviePlayingID" Type="Int32" />
+    <Property Name="Reserved" Type="Boolean" />
+    <Property Name="SeatIdentity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cinema" Relationship="Self.FK_Seats_Cinema" FromRole="Seats" ToRole="Cinema" />
+    <NavigationProperty Name="MoviePlayings" Relationship="Self.FK_MoviePlaying_Seats" FromRole="Seats" ToRole="MoviePlaying" />
+    <NavigationProperty Name="MoviePlaying" Relationship="Self.FK_Seats_MoviePlaying" FromRole="Seats" ToRole="MoviePlaying" />
+  </EntityType>
+  <EntityType Name="Snacks_Selling">
+    <Key>
+      <PropertyRef Name="SnackID" />
+    </Key>
+    <Property Name="SnackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Snacks_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AUser_Previous_Bought_Snacks" Relationship="Self.FK_AUser_Previous_Bought_Snacks_Snacks_Selling" FromRole="Snacks_Selling" ToRole="AUser_Previous_Bought_Snacks" />
+  </EntityType>
+  <Association Name="FK_AUserSeen_AMovie">
+    <End Role="AMovie" Type="Self.AMovie" Multiplicity="0..1" />
+    <End Role="AUserSeen" Type="Self.AUserSeen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AMovie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="AUserSeen">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cinema_AMovie">
+    <End Role="AMovie" Type="Self.AMovie" Multiplicity="0..1" />
+    <End Role="Cinema" Type="Self.Cinema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AMovie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Cinema">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MoviePlaying_AMovie">
+    <End Role="AMovie" Type="Self.AMovie" Multiplicity="0..1" />
+    <End Role="MoviePlaying" Type="Self.MoviePlaying" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AMovie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="MoviePlaying">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_AMovie">
+    <End Role="AMovie" Type="Self.AMovie" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AMovie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Seats">
+    <End Role="AMovie" Type="Self.AMovie" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AMovie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AUser_AUser_Previous_Bought_Snacks">
+    <End Role="AUser_Previous_Bought_Snacks" Type="Self.AUser_Previous_Bought_Snacks" Multiplicity="0..1" />
+    <End Role="AUser" Type="Self.AUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUser_Previous_Bought_Snacks">
+        <PropertyRef Name="AUserPBSID" />
+      </Principal>
+      <Dependent Role="AUser">
+        <PropertyRef Name="AUserPBSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AUser_AUserType">
+    <End Role="AUserType" Type="Self.AUserType" Multiplicity="0..1" />
+    <End Role="AUser" Type="Self.AUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUserType">
+        <PropertyRef Name="AUserTypeID" />
+      </Principal>
+      <Dependent Role="AUser">
+        <PropertyRef Name="AUserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AUser_Reservation">
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
+    <End Role="AUser" Type="Self.AUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="ReservationID" />
+      </Principal>
+      <Dependent Role="AUser">
+        <PropertyRef Name="ReservationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AUserSeen_AUser">
+    <End Role="AUser" Type="Self.AUser" Multiplicity="0..1" />
+    <End Role="AUserSeen" Type="Self.AUserSeen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AUserSeen">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_AUser">
+    <End Role="AUser" Type="Self.AUser" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AUser_Previous_Bought_Snacks_Snacks_Selling">
+    <End Role="Snacks_Selling" Type="Self.Snacks_Selling" Multiplicity="0..1" />
+    <End Role="AUser_Previous_Bought_Snacks" Type="Self.AUser_Previous_Bought_Snacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Snacks_Selling">
+        <PropertyRef Name="SnackID" />
+      </Principal>
+      <Dependent Role="AUser_Previous_Bought_Snacks">
+        <PropertyRef Name="SnacksID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Bought_Snacks">
+    <End Role="Bought_Snacks" Type="Self.Bought_Snacks" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bought_Snacks">
+        <PropertyRef Name="BoughtSnacksID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="BoughtSnacksID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cinema_MoviePlaying">
+    <End Role="MoviePlaying" Type="Self.MoviePlaying" Multiplicity="0..1" />
+    <End Role="Cinema" Type="Self.Cinema" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MoviePlaying">
+        <PropertyRef Name="MovieplayingID" />
+      </Principal>
+      <Dependent Role="Cinema">
+        <PropertyRef Name="MoviePlayingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Cinema">
+    <End Role="Cinema" Type="Self.Cinema" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinema">
+        <PropertyRef Name="CinemaID" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="CinemaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seats_Cinema">
+    <End Role="Cinema" Type="Self.Cinema" Multiplicity="0..1" />
+    <End Role="Seats" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cinema">
+        <PropertyRef Name="CinemaID" />
+      </Principal>
+      <Dependent Role="Seats">
+        <PropertyRef Name="CinemaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MoviePlaying_Seats">
+    <End Role="Seats" Type="Self.Seat" Multiplicity="0..1" />
+    <End Role="MoviePlaying" Type="Self.MoviePlaying" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seats">
+        <PropertyRef Name="SeatsID" />
+      </Principal>
+      <Dependent Role="MoviePlaying">
+        <PropertyRef Name="SeatsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seats_MoviePlaying">
+    <End Role="MoviePlaying" Type="Self.MoviePlaying" Multiplicity="0..1" />
+    <End Role="Seats" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MoviePlaying">
+        <PropertyRef Name="MovieplayingID" />
+      </Principal>
+      <Dependent Role="Seats">
+        <PropertyRef Name="MoviePlayingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BPlayDKEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AMovies" EntityType="Self.AMovie" />
+    <EntitySet Name="AUsers" EntityType="Self.AUser" />
+    <EntitySet Name="AUser_Previous_Bought_Snacks" EntityType="Self.AUser_Previous_Bought_Snacks" />
+    <EntitySet Name="AUserSeens" EntityType="Self.AUserSeen" />
+    <EntitySet Name="AUserTypes" EntityType="Self.AUserType" />
+    <EntitySet Name="Bought_Snacks" EntityType="Self.Bought_Snacks" />
+    <EntitySet Name="Cinemas" EntityType="Self.Cinema" />
+    <EntitySet Name="MoviePlayings" EntityType="Self.MoviePlaying" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="Seats" EntityType="Self.Seat" />
+    <EntitySet Name="Snacks_Selling" EntityType="Self.Snacks_Selling" />
+    <AssociationSet Name="FK_AUserSeen_AMovie" Association="Self.FK_AUserSeen_AMovie">
+      <End Role="AMovie" EntitySet="AMovies" />
+      <End Role="AUserSeen" EntitySet="AUserSeens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cinema_AMovie" Association="Self.FK_Cinema_AMovie">
+      <End Role="AMovie" EntitySet="AMovies" />
+      <End Role="Cinema" EntitySet="Cinemas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MoviePlaying_AMovie" Association="Self.FK_MoviePlaying_AMovie">
+      <End Role="AMovie" EntitySet="AMovies" />
+      <End Role="MoviePlaying" EntitySet="MoviePlayings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_AMovie" Association="Self.FK_Reservation_AMovie">
+      <End Role="AMovie" EntitySet="AMovies" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Seats" Association="Self.FK_Reservation_Seats">
+      <End Role="AMovie" EntitySet="AMovies" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AUser_AUser_Previous_Bought_Snacks" Association="Self.FK_AUser_AUser_Previous_Bought_Snacks">
+      <End Role="AUser_Previous_Bought_Snacks" EntitySet="AUser_Previous_Bought_Snacks" />
+      <End Role="AUser" EntitySet="AUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AUser_AUserType" Association="Self.FK_AUser_AUserType">
+      <End Role="AUserType" EntitySet="AUserTypes" />
+      <End Role="AUser" EntitySet="AUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AUser_Reservation" Association="Self.FK_AUser_Reservation">
+      <End Role="Reservation" EntitySet="Reservations" />
+      <End Role="AUser" EntitySet="AUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AUserSeen_AUser" Association="Self.FK_AUserSeen_AUser">
+      <End Role="AUser" EntitySet="AUsers" />
+      <End Role="AUserSeen" EntitySet="AUserSeens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_AUser" Association="Self.FK_Reservation_AUser">
+      <End Role="AUser" EntitySet="AUsers" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AUser_Previous_Bought_Snacks_Snacks_Selling" Association="Self.FK_AUser_Previous_Bought_Snacks_Snacks_Selling">
+      <End Role="Snacks_Selling" EntitySet="Snacks_Selling" />
+      <End Role="AUser_Previous_Bought_Snacks" EntitySet="AUser_Previous_Bought_Snacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Bought_Snacks" Association="Self.FK_Reservation_Bought_Snacks">
+      <End Role="Bought_Snacks" EntitySet="Bought_Snacks" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cinema_MoviePlaying" Association="Self.FK_Cinema_MoviePlaying">
+      <End Role="MoviePlaying" EntitySet="MoviePlayings" />
+      <End Role="Cinema" EntitySet="Cinemas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Cinema" Association="Self.FK_Reservation_Cinema">
+      <End Role="Cinema" EntitySet="Cinemas" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seats_Cinema" Association="Self.FK_Seats_Cinema">
+      <End Role="Cinema" EntitySet="Cinemas" />
+      <End Role="Seats" EntitySet="Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MoviePlaying_Seats" Association="Self.FK_MoviePlaying_Seats">
+      <End Role="Seats" EntitySet="Seats" />
+      <End Role="MoviePlaying" EntitySet="MoviePlayings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seats_MoviePlaying" Association="Self.FK_Seats_MoviePlaying">
+      <End Role="MoviePlaying" EntitySet="MoviePlayings" />
+      <End Role="Seats" EntitySet="Seats" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

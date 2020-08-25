@@ -1,0 +1,5 @@
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\SQLHandler\bin\Debug\netstandard2.0\SQLHandler.deps.json
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\SQLHandler\bin\Debug\netstandard2.0\SQLHandler.dll
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\SQLHandler\obj\Debug\netstandard2.0\SQLHandler.csprojAssemblyReference.cache
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\SQLHandler\obj\Debug\netstandard2.0\SQLHandler.AssemblyInfoInputs.cache
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\SQLHandler\obj\Debug\netstandard2.0\SQLHandler.AssemblyInfo.cs

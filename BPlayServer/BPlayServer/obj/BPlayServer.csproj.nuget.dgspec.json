@@ -30,7 +30,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj": {
+                "projectPath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -41,6 +45,18 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,6 +77,16 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj",
+        "projectName": "DatabaseConnection",
+        "projectPath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

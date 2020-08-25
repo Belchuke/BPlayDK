@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BPlayDKModelStoreContainer" CdmEntityContainer="BPlayDKEntities">
+    <EntitySetMapping Name="AMovies">
+      <EntityTypeMapping TypeName="BPlayDKModel.AMovie">
+        <MappingFragment StoreEntitySet="AMovie">
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MovieYear" ColumnName="MovieYear" />
+          <ScalarProperty Name="Released" ColumnName="Released" />
+          <ScalarProperty Name="Runtime" ColumnName="Runtime" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Director" ColumnName="Director" />
+          <ScalarProperty Name="Writer" ColumnName="Writer" />
+          <ScalarProperty Name="Actors" ColumnName="Actors" />
+          <ScalarProperty Name="Plot" ColumnName="Plot" />
+          <ScalarProperty Name="MovieLanguage" ColumnName="MovieLanguage" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Award" ColumnName="Award" />
+          <ScalarProperty Name="Poster" ColumnName="Poster" />
+          <ScalarProperty Name="Metascore" ColumnName="Metascore" />
+          <ScalarProperty Name="imdbRating" ColumnName="imdbRating" />
+          <ScalarProperty Name="imdbVotes" ColumnName="imdbVotes" />
+          <ScalarProperty Name="imdbID" ColumnName="imdbID" />
+          <ScalarProperty Name="MovieType" ColumnName="MovieType" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="ServerPath" ColumnName="ServerPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUsers">
+      <EntityTypeMapping TypeName="BPlayDKModel.AUser">
+        <MappingFragment StoreEntitySet="AUser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="AUserPBSID" ColumnName="AUserPBSID" />
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="AUserTypeID" ColumnName="AUserTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUser_Previous_Bought_Snacks">
+      <EntityTypeMapping TypeName="BPlayDKModel.AUser_Previous_Bought_Snacks">
+        <MappingFragment StoreEntitySet="AUser_Previous_Bought_Snacks">
+          <ScalarProperty Name="AUserPBSID" ColumnName="AUserPBSID" />
+          <ScalarProperty Name="SnacksID" ColumnName="SnacksID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUserSeens">
+      <EntityTypeMapping TypeName="BPlayDKModel.AUserSeen">
+        <MappingFragment StoreEntitySet="AUserSeen">
+          <ScalarProperty Name="AUserSeenID" ColumnName="AUserSeenID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUserTypes">
+      <EntityTypeMapping TypeName="BPlayDKModel.AUserType">
+        <MappingFragment StoreEntitySet="AUserType">
+          <ScalarProperty Name="AUserTypeID" ColumnName="AUserTypeID" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bought_Snacks">
+      <EntityTypeMapping TypeName="BPlayDKModel.Bought_Snacks">
+        <MappingFragment StoreEntitySet="Bought_Snacks">
+          <ScalarProperty Name="BoughtSnacksID" ColumnName="BoughtSnacksID" />
+          <ScalarProperty Name="SnacksID" ColumnName="SnacksID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cinemas">
+      <EntityTypeMapping TypeName="BPlayDKModel.Cinema">
+        <MappingFragment StoreEntitySet="Cinema">
+          <ScalarProperty Name="CinemaID" ColumnName="CinemaID" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="MoviePlayingID" ColumnName="MoviePlayingID" />
+          <ScalarProperty Name="AmountOfSeats" ColumnName="AmountOfSeats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoviePlayings">
+      <EntityTypeMapping TypeName="BPlayDKModel.MoviePlaying">
+        <MappingFragment StoreEntitySet="MoviePlaying">
+          <ScalarProperty Name="MovieplayingID" ColumnName="MovieplayingID" />
+          <ScalarProperty Name="SeatsID" ColumnName="SeatsID" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="DatePlaying" ColumnName="DatePlaying" />
+          <ScalarProperty Name="TimePlaying" ColumnName="TimePlaying" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="BPlayDKModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CinemaID" ColumnName="CinemaID" />
+          <ScalarProperty Name="SeatsID" ColumnName="SeatsID" />
+          <ScalarProperty Name="BoughtSnacksID" ColumnName="BoughtSnacksID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="BPlayDKModel.Seat">
+        <MappingFragment StoreEntitySet="Seats">
+          <ScalarProperty Name="SeatsID" ColumnName="SeatsID" />
+          <ScalarProperty Name="CinemaID" ColumnName="CinemaID" />
+          <ScalarProperty Name="MoviePlayingID" ColumnName="MoviePlayingID" />
+          <ScalarProperty Name="Reserved" ColumnName="Reserved" />
+          <ScalarProperty Name="SeatIdentity" ColumnName="SeatIdentity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Snacks_Selling">
+      <EntityTypeMapping TypeName="BPlayDKModel.Snacks_Selling">
+        <MappingFragment StoreEntitySet="Snacks_Selling">
+          <ScalarProperty Name="SnackID" ColumnName="SnackID" />
+          <ScalarProperty Name="Snacks_Name" ColumnName="Snacks_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

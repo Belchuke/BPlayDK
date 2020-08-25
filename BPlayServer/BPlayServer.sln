@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPlayServer", "BPlayServer\BPlayServer.csproj", "{2E4AAA5A-96C3-4E62-8CA8-DC0C7870120D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BPlayServer", "BPlayServer\BPlayServer.csproj", "{2E4AAA5A-96C3-4E62-8CA8-DC0C7870120D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseConnection", "DatabaseConnection\DatabaseConnection.csproj", "{F1390A18-B025-4F51-BB84-4EBF9D063130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2E4AAA5A-96C3-4E62-8CA8-DC0C7870120D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E4AAA5A-96C3-4E62-8CA8-DC0C7870120D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E4AAA5A-96C3-4E62-8CA8-DC0C7870120D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1390A18-B025-4F51-BB84-4EBF9D063130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1390A18-B025-4F51-BB84-4EBF9D063130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1390A18-B025-4F51-BB84-4EBF9D063130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1390A18-B025-4F51-BB84-4EBF9D063130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

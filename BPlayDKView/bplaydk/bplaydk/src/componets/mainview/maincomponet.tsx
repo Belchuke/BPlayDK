@@ -3,18 +3,19 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  BrowserRouter
 } from "react-router-dom";
-import '../../resources/globalstyles/bodystyle.css';
 import { IAuser } from "../../interfaces/auserinterface";
 import './maincomponet.css';
+import ShowMovies from "../showmoviescomponet/showmoviescomponet";
+
 
 function Maincomponet()
 {
   const logo = require('../../resources/Images/BPlayDKLogo.png');
 
   return (
-    <Router>
       <div id="pagewrapper">
         <div id="sidemenu">
           <img alt='logo' src={String(logo)} />
@@ -26,22 +27,23 @@ function Maincomponet()
           <h3>About us</h3>
         </div>
 
-        <div id="mainbar">
-        
         <div id="topbar">
-          
+          <h6 id="alabel">hej</h6>
         </div>
+       
+      <div id="view">
+        <BrowserRouter>
+          <switch>
+            <Route exact path="/" component={ShowMovies}></Route>
+          </switch>
+        </BrowserRouter>
 
-        <div id="view">
-          <Switch>
-              
-          </Switch>
-        </div>
       </div>
-      
-    </div>
-    </Router>
-    
+
+        
+     
+      </div>
+          
   )
 
 }
