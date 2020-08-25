@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BPlayServer.Data;
+using BPlayServer.Model;
+using DatabaseConnection.DB;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,22 +15,20 @@ namespace BPlayServer.Controllers
     [EnableCors]
     public class BPlayController : ControllerBase
     {
+        public MetodHandler DBHandler = new MetodHandler();
 
-        /// Get example
         [EnableCors]
-        [HttpGet("/getstringexample")] // url path --- localhost:5000/api/getstringexample
-        public ActionResult<string> ReturnRandomStringAsJson()
+        [HttpGet("/users/getallusers")]
+        public ActionResult<IEnumerable<AUser>> GetAllusersFromDB()
         {
-            string randomString = "Return this string over API";
-            return Ok(randomString);
+            return Ok(DBHandler.GetAllUsers());
         }
 
-        /// Post example 
         [EnableCors]
-        [HttpPost("/Ppostexample")]
-        public IActionResult GetStringAndReturnANewString([FromBody] string result)
+        [HttpPost("/users/addnewuser")]
+        public IActionResult AddNewUserToDB([FromBody] AUser user)
         {
-            return Ok(result + "this returns");
+            return Ok(DBHandler.CreateNewUser(user));
         }
     }
 }

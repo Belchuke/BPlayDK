@@ -7,5 +7,6 @@ namespace BPlayServer.Data.AMoviePlayingRepo
 {
     interface IAMoviePlayingRepo
     {
+        
     }
 }

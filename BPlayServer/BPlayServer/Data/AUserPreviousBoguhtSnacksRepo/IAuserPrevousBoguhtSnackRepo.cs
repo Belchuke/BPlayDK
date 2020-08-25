@@ -9,6 +9,8 @@ namespace BPlayServer.Data.AUserPreviousBoguhtSnacksRepo
     interface IAuserPrevousBoguhtSnackRepo
     {
         IEnumerable<AUser_Previous_Bought_Snacks> GetAllSnacksBought();
-        AUser_Previous_Bought_Snacks AddToList(Snacks_Selling AddBought);
+        IEnumerable<AUser_Previous_Bought_Snacks> GetSpecificUserSnacksBought(AUser user);
+        AUser_Previous_Bought_Snacks GetPreviusBoughtEntityByID(int ID);
+        string RemoveAAUser_Previous_Bought_Snacks(Snacks_Selling RemoveBought);
     }
 }

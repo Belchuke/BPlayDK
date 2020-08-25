@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AUser>
+    <ID>0</ID>
+    <Email>jcb.a.belchuke@gmail.com</Email>
+    <Password>Test1</Password>
+  </AUser>
+  <AUser>
+    <ID>1</ID>
+    <Email>ezreal4849@gmail.com</Email>
+    <Password>Test2</Password>
+  </AUser>
+  <AUser>
+    <ID>2</ID>
+    <Email>Axelsen48@gmail.com</Email>
+    <Password>Test3</Password>
+  </AUser>
+  <AUser>
+    <ID>4</ID>
+    <Email>TestEmail@gmail.com</Email>
+    <Password>123456</Password>
+  </AUser>
+</ArrayOfAUser>

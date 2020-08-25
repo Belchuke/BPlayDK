@@ -9,8 +9,9 @@ namespace BPlayServer.Data.AUserTypeRepo
     interface IAUserTypeRepo
     {
         AUserType GetUserType(AUser user);
+        AUserType GetUserTypeByID(int ID);
         IEnumerable<AUserType> GetAllUserTypes();
         string CreateUserType(AUser User, AUserType usertype);
-
+        
     }
 }

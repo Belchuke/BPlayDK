@@ -12,6 +12,6 @@ namespace BPlayServer.Data.AUserSeenRepo
         IEnumerable<AUserSeen> GetSpecificUserSeen(AUser user);
         bool CheckIfUserHasSeenMovies(AUser user);
         string CreateAUserSeen(AUserSeen aUserSeen,AUser user);
-        AUserSeen DeleteAuserSeen(AUserSeen aUserSeen);
+        string DeleteAuserSeen(AUserSeen aUserSeen);
     }
 }

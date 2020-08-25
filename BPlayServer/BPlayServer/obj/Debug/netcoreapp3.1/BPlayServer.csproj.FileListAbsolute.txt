@@ -59,3 +59,8 @@ C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\obj\Debug\netcore
 C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\obj\Debug\netcoreapp3.1\BPlayServer.csproj.CoreCompileInputs.cache
 C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\obj\Debug\netcoreapp3.1\BPlayServer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\bin\Debug\netcoreapp3.1\DatabaseConnection.exe
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\bin\Debug\netcoreapp3.1\EntityFramework.dll
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\bin\Debug\netcoreapp3.1\DatabaseConnection.pdb
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\bin\Debug\netcoreapp3.1\DatabaseConnection.exe.config
+C:\Users\jcbab\Desktop\BPlayDK\BPlayDK\BPlayServer\BPlayServer\bin\Debug\netcoreapp3.1\EntityFramework.xml

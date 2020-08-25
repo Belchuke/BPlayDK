@@ -11,9 +11,9 @@ namespace BPlayServer.Data.AUserRepo
         AUser GetUserByID(int iD);
         AUser GetUserByEmail(string Emai);
         AUser GetUserName(string UserName); // Default email
-        bool CheckIfUserExist(AUser user);
+        bool CheckIfUserExist(AUser user); 
         string CreateNewUser(AUser user);
-        AUser DeleteAUser(AUser user);
+        string DeleteAUser(AUser user);
 
     }
 }
