@@ -25,6 +25,7 @@ function Login() {
     var _b = react_1.useState({
         id: 0,
         email: "",
+        username: "",
         password: ""
     }), jsonResult = _b[0], setJsonResult = _b[1];
     //#region Inputhandlers
@@ -54,9 +55,8 @@ function Login() {
     }
     var history = react_router_dom_2.useHistory();
     function tryLogin() {
-        //fetch("https://localhost:44337/controller/users/adduser", requestOptions)
-        //  .then(x => x.text()).then(y => onResponse(y));
-        // apphistory?.push("/login");
+        fetch("https://localhost:44337/controller/users/checkifuserexist", requestOptions)
+            .then(function (x) { return x.text(); }).then(function (y) { return onResponse(y); });
         history.push("/login");
     }
     var logo = require('../../resources/Images/BPlayDKLogo.png');

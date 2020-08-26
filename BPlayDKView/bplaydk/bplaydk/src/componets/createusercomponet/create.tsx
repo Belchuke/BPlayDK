@@ -77,6 +77,7 @@ function Create()
     body: JSON.stringify({
       Email: inputs.emailInput,
       Password: inputs.passwordInput
+      
     })
   };
 
@@ -103,8 +104,10 @@ function Create()
     {
       if (passwordValidate())
       {
-        fetch("https://localhost:44337/controller/users/adduser", requestOptions)
-          .then(x => x.text()).then(y => onResponse(y));
+         console.log(requestOptions.body);
+         
+        fetch("https://localhost:44398/api/users/addnewuser", requestOptions)
+          .then(x => x.text()).then(y => onResponse(y)); // CommandAPI
         }
     }
   }

@@ -22,7 +22,8 @@ function Login()
   const [jsonResult, setJsonResult] = useState<IAuser>({
     id: 0,
     email: "",
-    password: ""
+    username: "",
+    password: ""  
   });
 
 
@@ -69,9 +70,9 @@ function Login()
 
   function tryLogin()
   {
-    //fetch("https://localhost:44337/controller/users/adduser", requestOptions)
-    //  .then(x => x.text()).then(y => onResponse(y));
-   // apphistory?.push("/login");
+    fetch("https://localhost:44337/controller/users/checkifuserexist", requestOptions)
+      .then(x => x.text()).then(y => onResponse(y));
+
     history.push("/login");
   }
 

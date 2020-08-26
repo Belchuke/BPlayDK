@@ -30,11 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {
-              "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj": {
-                "projectPath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -46,15 +42,21 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.7, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[3.1.7, )"
             },
@@ -63,6 +65,18 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.7, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
@@ -85,16 +99,6 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
-      }
-    },
-    "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj",
-        "projectName": "DatabaseConnection",
-        "projectPath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\DatabaseConnection\\DatabaseConnection.csproj"
-      },
-      "frameworks": {
-        "net472": {}
       }
     }
   }
