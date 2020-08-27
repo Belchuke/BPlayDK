@@ -78,6 +78,8 @@ function Login()
 
   const logo = require('../../resources/Images/BPlayDKLogo.png');
 
+  
+
   return (
     <div>
       <div className="centered">
