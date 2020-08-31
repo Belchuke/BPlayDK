@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../../resources/globalstyles/bodystyle.css';
 import '../../resources/globalstyles/login&createStyles.css';
 import { IAuser } from "../../interfaces/auserinterface";
+import axios, { AxiosResponse } from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
@@ -71,19 +72,11 @@ function Create()
     password: ""
   });
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      Email: inputs.emailInput,
-      Password: inputs.passwordInput
-      
-    })
-  };
 
   function onResponse(rep:string)
   {
     setpostresult(rep);
+
     if (rep != "User allready exists")
     {
       alert("User created");
@@ -103,16 +96,32 @@ function Create()
     if (emailValidate())
     {
       if (passwordValidate())
-      {
-         console.log(requestOptions.body);
-         
-        fetch("https://localhost:44398/api/users/addnewuser", requestOptions)
-          .then(x => x.text()).then(y => onResponse(y)); // CommandAPI
-        }
+      {    
+        console.log(inputs.emailInput);
+        console.log(inputs.passwordInput);
+        axios({
+          method: 'post', url: 'https://localhost:44398/api/ausers', data: {
+            UserName: inputs.emailInput,
+            Email: inputs.emailInput,
+            Password: inputs.passwordInput,
+            AuserTypeId: 1
+          },
+        }).then(rep => {
+
+          console.log(rep.data);
+          if (rep.data == "User Allready exist")
+          {
+            alert("Account allready exist");
+          }
+          else {
+            alert("New user created");
+            window.history.go(-1);
+          }
+        });  
+        
+      }
     }
   }
-
-
     return (
       <div>
         <div className="centered">

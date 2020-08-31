@@ -5,7 +5,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import axios, { AxiosResponse } from 'axios';
 import '../../resources/globalstyles/bodystyle.css';
 import '../../resources/globalstyles/login&createStyles.css';
 import { IAuser } from "../../interfaces/auserinterface";
@@ -44,36 +44,52 @@ function Login()
   }
 
   //#endregion
-
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      Email: inputs.emailInput,
-      Password: inputs.passwordInput
-    })
-  };
-
-  function onResponse(rep:string)
-  {
-    if (rep == "User Exist")
-    {
-      // If it is correct
-    }
-    else
-    {
-      alert("Email or password was incorrect try again");
-    }
-  }
-
   const history = useHistory();
 
   function tryLogin()
   {
-    fetch("https://localhost:44337/controller/users/checkifuserexist", requestOptions)
-      .then(x => x.text()).then(y => onResponse(y));
-
-    history.push("/login");
+  /*  axios({
+      method: 'get', url: 'https://localhost:44398/api/ausers/doesuserexist', {data}
+      }}).then(rep => {
+      console.log(rep);
+      if (rep.data == "Does Not Exist")
+        alert("Incorrect email or password");
+      else {
+        history.push("/login");
+      }
+    })*/
+    let passwordToSeach = inputs.passwordInput;
+    let emailToSearch = inputs.emailInput;
+    try {
+     /* const res = axios.get("https://localhost:44398/api/ausers",
+        {
+          data:
+          {
+            "Email": inputs.emailInput,
+            "Password": inputs.passwordInput
+          }
+        }) */
+      axios.get("https://localhost:44398/api/ausers", {
+        params: {
+          Email: inputs.emailInput,
+          Password: inputs.passwordInput,
+        }
+      }).then(response => {
+        if (response.data == "Exist")
+        {
+          history.push("/login");
+        }
+        else if (response.data == "Does Not Exist")
+        {
+          alert("Try again with diffrent email or password");
+        }
+        else
+        {
+          alert("Error with server");
+        }
+      });
+    } catch (error) { console.log(error) }
+    
   }
 
   const logo = require('../../resources/Images/BPlayDKLogo.png');

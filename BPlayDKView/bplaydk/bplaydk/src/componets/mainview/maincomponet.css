@@ -67,28 +67,7 @@ h3{
     bottom:20px;
 }
 
-#showmovies
-{
-  visibility: collapse; 
-  margin-top: -63px;
-}
-
-#showreservations{
-    visibility: collapse;
-    margin-top: -130px;
-}
-
-#showbuysnacks{
-    visibility: collapse;
-    margin-top: -130px;
-}
-
-#showsnacks{
-    visibility: collapse;
-    margin-top: -130px;
-}
-
-#showaboutus{
-    visibility: visible;
-    margin-top: -130px;
+#ViewID {
+    margin: 0;
+    color: black;
 }

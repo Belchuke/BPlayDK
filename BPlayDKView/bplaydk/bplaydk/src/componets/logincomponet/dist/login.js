@@ -13,6 +13,7 @@ var __assign = (this && this.__assign) || function () {
 exports.__esModule = true;
 var react_1 = require("react");
 var react_router_dom_1 = require("react-router-dom");
+var axios_1 = require("axios");
 require("../../resources/globalstyles/bodystyle.css");
 require("../../resources/globalstyles/login&createStyles.css");
 var react_router_dom_2 = require("react-router-dom");
@@ -37,27 +38,49 @@ function Login() {
         setInputs(__assign(__assign({}, inputs), { passwordInput: e }));
     }
     //#endregion
-    var requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            Email: inputs.emailInput,
-            Password: inputs.passwordInput
-        })
-    };
-    function onResponse(rep) {
-        if (rep == "User Exist") {
-            // If it is correct
-        }
-        else {
-            alert("Email or password was incorrect try again");
-        }
-    }
     var history = react_router_dom_2.useHistory();
     function tryLogin() {
-        fetch("https://localhost:44337/controller/users/checkifuserexist", requestOptions)
-            .then(function (x) { return x.text(); }).then(function (y) { return onResponse(y); });
-        history.push("/login");
+        /*  axios({
+            method: 'get', url: 'https://localhost:44398/api/ausers/doesuserexist', {data}
+            }}).then(rep => {
+            console.log(rep);
+            if (rep.data == "Does Not Exist")
+              alert("Incorrect email or password");
+            else {
+              history.push("/login");
+            }
+          })*/
+        var passwordToSeach = inputs.passwordInput;
+        var emailToSearch = inputs.emailInput;
+        try {
+            /* const res = axios.get("https://localhost:44398/api/ausers",
+               {
+                 data:
+                 {
+                   "Email": inputs.emailInput,
+                   "Password": inputs.passwordInput
+                 }
+               }) */
+            axios_1["default"].get("https://localhost:44398/api/ausers", {
+                params: {
+                    Email: inputs.emailInput,
+                    Password: inputs.passwordInput
+                }
+            }).then(function (response) {
+                if (response.data == "Exist") {
+                    history.push("/login");
+                }
+                else if (response.data == "Does Not Exist") {
+                    alert("Try again with diffrent email or password");
+                }
+                else {
+                    alert("Error with server");
+                }
+            });
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
     var logo = require('../../resources/Images/BPlayDKLogo.png');
     return (react_1["default"].createElement("div", null,

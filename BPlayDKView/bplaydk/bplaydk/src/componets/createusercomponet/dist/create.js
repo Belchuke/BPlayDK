@@ -14,6 +14,7 @@ exports.__esModule = true;
 var react_1 = require("react");
 require("../../resources/globalstyles/bodystyle.css");
 require("../../resources/globalstyles/login&createStyles.css");
+var axios_1 = require("axios");
 var react_router_dom_1 = require("react-router-dom");
 function Create() {
     var _a = react_1.useState({
@@ -48,14 +49,6 @@ function Create() {
         email: "",
         password: ""
     }), jsonResult = _b[0], setJsonResult = _b[1];
-    var requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            Email: inputs.emailInput,
-            Password: inputs.passwordInput
-        })
-    };
     function onResponse(rep) {
         setpostresult(rep);
         if (rep != "User allready exists") {
@@ -70,9 +63,25 @@ function Create() {
     function createUser() {
         if (emailValidate()) {
             if (passwordValidate()) {
-                console.log(requestOptions.body);
-                fetch("https://localhost:44398/api/users/addnewuser", requestOptions)
-                    .then(function (x) { return x.text(); }).then(function (y) { return onResponse(y); }); // CommandAPI
+                console.log(inputs.emailInput);
+                console.log(inputs.passwordInput);
+                axios_1["default"]({
+                    method: 'post', url: 'https://localhost:44398/api/ausers', data: {
+                        UserName: inputs.emailInput,
+                        Email: inputs.emailInput,
+                        Password: inputs.passwordInput,
+                        AuserTypeId: 1
+                    }
+                }).then(function (rep) {
+                    console.log(rep.data);
+                    if (rep.data == "User Allready exist") {
+                        alert("Account allready exist");
+                    }
+                    else {
+                        alert("New user created");
+                        window.history.go(-1);
+                    }
+                });
             }
         }
     }

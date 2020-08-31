@@ -1,140 +1,64 @@
-import React, { } from "react";
+import React, { Component, useState } from "react";
 import './maincomponet.css';
-import ShowMovies from "../moviescomponet/moviescomponet"
-import ShowReservations from "../reservationscomponets/reservationcomponets";
-import ShowBuySnacks from "../buysnackscomponet/buysnackscomponet";
-import ShowSnacks from "../snackscomponet/snackscomponet";
-import ShowAboutUs from "../aboutuscomponet/aboutcomponet";
+import DynamicSwitch from '../helpercomponets/DynamicSwitch';
 
 
-function Maincomponet()
-{
-  let array: string[] = ["showmovies", "showreservations","showbuysnacks","showsnacks", "showaboutus"];
-
-  function toggle_visibility(id: string)
-  {
-    if (id == "showmovies")
+function Maincomponet() {
+  
+  const dynamicRoutes = [
     {
-      var e = document.getElementById(id)!;
-      console.log(e);
-      e.style.visibility = 'visible';  
-
-      var e2 = document.getElementById("showreservations")!;
-      console.log(e2);
-      e2.style.visibility = 'collapse';
-
-      var e3 = document.getElementById("showbuysnacks")!;
-      console.log(e3);
-      e3.style.visibility = 'collapse';
-
-      var e4 = document.getElementById("showsnacks")!;
-      console.log(e4);
-      e4.style.visibility = 'collapse';
-
-      var e5 = document.getElementById("showaboutus")!;
-      console.log(e4);
-      e5.style.visibility = 'collapse';
-    }
-    else if (id == "showreservations")
+        name: "Movies",
+        component: (
+        <div>
+          <h1 id="ViewID">Movies</h1>
+        </div>)
+    },
     {
-      var e = document.getElementById(id)!;
-      console.log(e);
-      e.style.visibility = 'visible';  
-
-      var e2 = document.getElementById("showmovies")!;
-      console.log(e2);
-      e2.style.visibility = 'collapse';
-
-      var e3 = document.getElementById("showbuysnacks")!;
-      console.log(e3);
-      e3.style.visibility = 'collapse';
-
-      var e4 = document.getElementById("showsnacks")!;
-      console.log(e4);
-      e4.style.visibility = 'collapse';
-
-      var e5 = document.getElementById("showaboutus")!;
-      console.log(e4);
-      e5.style.visibility = 'collapse';
-    }
-    else if (id == "showbuysnacks")
+        name: "My Reservations",
+        component: (
+            <div>
+                <h1 id="ViewID">My Reservations</h1>
+                <p>So you can pass down new elements!</p>
+            </div>)
+    },
     {
-      var e = document.getElementById(id)!;
-      console.log(e);
-      e.style.visibility = 'visible';  
-
-      var e2 = document.getElementById("showmovies")!;
-      console.log(e2);
-      e2.style.visibility = 'collapse';
-
-      var e3 = document.getElementById("showsnacks")!;
-      console.log(e3);
-      e3.style.visibility = 'collapse';
-
-      var e4 = document.getElementById("showreservations")!;
-      console.log(e4);
-      e4.style.visibility = 'collapse';
-
-      var e5 = document.getElementById("showaboutus")!;
-      console.log(e4);
-      e5.style.visibility = 'collapse';
-    }  
-    else if (id == "showsnacks")
+      name: "showbuysnacks",
+      component: (
+          <div>
+              <h1 id="ViewID">Buy Snacks</h1>
+              <p>So you can pass down new elements!</p>
+          </div>)
+    },
     {
-      var e = document.getElementById(id)!;
-      console.log(e);
-      e.style.visibility = 'visible';  
-
-      var e2 = document.getElementById("showmovies")!;
-      console.log(e2);
-      e2.style.visibility = 'collapse';
-
-      var e3 = document.getElementById("showbuysnacks")!;
-      console.log(e3);
-      e3.style.visibility = 'collapse';
-
-      var e4 = document.getElementById("showreservations")!;
-      console.log(e4);
-      e4.style.visibility = 'collapse';
-
-      var e5 = document.getElementById("showaboutus")!;
-      console.log(e4);
-      e5.style.visibility = 'collapse';
-    }
-    else if (id == "showsnacks")
+      name: "showsnacks",
+      component: (
+          <div>
+              <h1 id="ViewID">showsnacks</h1>
+              <p>So you can pass down new elements!</p>
+          </div>)
+    },
     {
-      var e = document.getElementById(id)!;
-      console.log(e);
-      e.style.visibility = 'visible';  
+      name: "showaboutus",
+      component: (
+          <div>
+              <h1 id="ViewID">showaboutus</h1>
+              <p>So you can pass down new elements!</p>
+          </div>)
+  },
 
-      var e2 = document.getElementById("showaboutus")!;
-      console.log(e2);
-      e2.style.visibility = 'collapse';
-
-      var e3 = document.getElementById("showbuysnacks")!;
-      console.log(e3);
-      e3.style.visibility = 'collapse';
-
-      var e4 = document.getElementById("showreservations")!;
-      console.log(e4);
-      e4.style.visibility = 'collapse';
-
-      var e5 = document.getElementById("showsnacks")!;
-      console.log(e4);
-      e5.style.visibility = 'collapse';
-    }
-  }
-
+]
+  const [currentDynamic, setCurrentDynamic] = useState("Movies")
+  
   const logo = require('../../resources/Images/BPlayDKLogo.png');
   return (
       <div id="pagewrapper">
         <div id="sidemenu">
           <img alt='logo' src={String(logo)} />          
-          <h2 onClick={() => toggle_visibility("showmovies")}>Movies</h2>
-          <h2 onClick={() => toggle_visibility("showreservations")}>My Reservations</h2>
-          <h2 onClick={() => toggle_visibility("showbuysnacks")}>Buy Snacks</h2>
-          <h2 onClick={() => toggle_visibility("showsnacks")}>My Snacks</h2>
-          <h3 onClick={() => toggle_visibility("showaboutus")}>About us</h3>
+          <h2 onClick={() => setCurrentDynamic("Movies")}>Movies</h2>
+          <h2 onClick={() => setCurrentDynamic("My Reservations")}>My Reservations</h2>
+          <h2 onClick={() => setCurrentDynamic("showbuysnacks")}>Buy Snacks</h2>
+          <h2 onClick={() => setCurrentDynamic("showsnacks")}>My Snacks</h2>
+          <h3 onClick={() => setCurrentDynamic("showaboutus")}>About us</h3>
         </div>
 
         <div id="topbar">
@@ -142,25 +66,7 @@ function Maincomponet()
         </div>
        
       <div id="view">
-        <div id="showmovies">
-          <ShowMovies></ShowMovies>
-        </div>
-
-        <div id="showreservations">
-          <ShowReservations></ShowReservations>
-        </div>
-
-        <div id="showbuysnacks">
-          <ShowBuySnacks></ShowBuySnacks>
-        </div>
-
-        <div id="showsnacks">
-          <ShowSnacks></ShowSnacks>
-        </div>
-
-        <div id="showaboutus">
-          <ShowAboutUs></ShowAboutUs>
-        </div>
+        <DynamicSwitch current={currentDynamic} routes={dynamicRoutes}></DynamicSwitch>
       </div>
 
      </div>
