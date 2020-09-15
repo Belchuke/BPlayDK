@@ -6,14 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BPlayServer.Models;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Cors;
 
 namespace BPlayServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors]
     public class AusersController : ControllerBase
     {
         private readonly BPlayDKContext _context;
@@ -23,31 +20,15 @@ namespace BPlayServer.Controllers
             _context = context;
         }
 
-        //GET: api/Ausers
-        [HttpGet("allusers")]
+        // GET: api/Ausers
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Auser>>> GetAuser()
         {
             return await _context.Auser.ToListAsync();
         }
-        [HttpGet]
-        public async Task<ActionResult<Auser>> CheckIfUserExist([FromQuery] Auser auser)
-        {
-            var list = await _context.Auser.ToListAsync();
-            var exist = list.FirstOrDefault(fuser => fuser.Email == auser.Email && fuser.Password == auser.Password);
-            if (exist != null)
-            {  
-                return Ok("Exist " + exist.UserId  + " " + exist.AuserTypeId);
-            }
-            else
-            {
-                return Ok("Does Not Exist");
-            }
-          
-         
-        }
 
         // GET: api/Ausers/5
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Auser>> GetAuser(int id)
         {
             var auser = await _context.Auser.FindAsync(id);
@@ -98,25 +79,10 @@ namespace BPlayServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Auser>> PostAuser(Auser auser)
         {
-            if (_context.AuserType.Count() == 0)
-            {
-                _context.AuserType.Add(new AuserType() { UserType = "User" });
-                _context.AuserType.Add(new AuserType() { UserType = "Admin" });
-                _context.SaveChanges();
-            }
+            _context.Auser.Add(auser);
+            await _context.SaveChangesAsync();
 
-
-            if (_context.Auser.Any(x => x.Email == auser.Email))
-                return Ok("User Allready exist");
-            else
-            {
-                var list = _context.AuserType.ToList();
-                _context.Auser.Add(auser);
-                await _context.SaveChangesAsync();
-
-                return Ok("New User Added");
-            }
-          
+            return CreatedAtAction("GetAuser", new { id = auser.UserId }, auser);
         }
 
         // DELETE: api/Ausers/5

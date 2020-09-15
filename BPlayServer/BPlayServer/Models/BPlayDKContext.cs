@@ -8,7 +8,6 @@ namespace BPlayServer.Models
     {
         public BPlayDKContext()
         {
-
         }
 
         public BPlayDKContext(DbContextOptions<BPlayDKContext> options)
@@ -16,24 +15,24 @@ namespace BPlayServer.Models
         {
         }
 
-        public DbSet<Amovie> Amovie { get; set; }
-        public DbSet<Auser> Auser { get; set; }
-        public DbSet<AuserPreviousBoughtSnacks> AuserPreviousBoughtSnacks { get; set; }
-        public DbSet<AuserSeen> AuserSeen { get; set; }
-        public DbSet<AuserType> AuserType { get; set; }
-        public DbSet<BoughtSnacks> BoughtSnacks { get; set; }
-        public DbSet<Cinema> Cinema { get; set; }
-        public DbSet<MoviePlaying> MoviePlaying { get; set; }
-        public DbSet<Reservation> Reservation { get; set; }
-        public DbSet<Seats> Seats { get; set; }
-        public DbSet<SnacksSelling> SnacksSelling { get; set; }
+        public virtual DbSet<Amovie> Amovie { get; set; }
+        public virtual DbSet<Auser> Auser { get; set; }
+        public virtual DbSet<AuserPreviousBoughtSnacks> AuserPreviousBoughtSnacks { get; set; }
+        public virtual DbSet<AuserSeen> AuserSeen { get; set; }
+        public virtual DbSet<AuserType> AuserType { get; set; }
+        public virtual DbSet<BoughtSnacks> BoughtSnacks { get; set; }
+        public virtual DbSet<Cinema> Cinema { get; set; }
+        public virtual DbSet<MoviePlaying> MoviePlaying { get; set; }
+        public virtual DbSet<Reservation> Reservation { get; set; }
+        public virtual DbSet<Seats> Seats { get; set; }
+        public virtual DbSet<SnacksSelling> SnacksSelling { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-GF9F4DS\\BELCHUKESQL;Database=BPlayDK;Trusted_Connection=True;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-GF9F4DS\\BELCHUKESQL;Initial Catalog=BPlayDK;Integrated Security=True");
             }
         }
 
@@ -112,20 +111,10 @@ namespace BPlayServer.Models
 
                 entity.Property(e => e.UserName).HasMaxLength(50);
 
-                entity.HasOne(d => d.AuserPbs)
-                    .WithMany(p => p.Auser)
-                    .HasForeignKey(d => d.AuserPbsid)
-                    .HasConstraintName("FK_AUser_AUser_Previous_Bought_Snacks");
-
                 entity.HasOne(d => d.AuserType)
                     .WithMany(p => p.Auser)
                     .HasForeignKey(d => d.AuserTypeId)
                     .HasConstraintName("FK_AUser_AUserType");
-
-                entity.HasOne(d => d.Reservation)
-                    .WithMany(p => p.Auser)
-                    .HasForeignKey(d => d.ReservationId)
-                    .HasConstraintName("FK_AUser_Reservation");
             });
 
             modelBuilder.Entity<AuserPreviousBoughtSnacks>(entity =>
@@ -144,6 +133,11 @@ namespace BPlayServer.Models
                     .WithMany(p => p.AuserPreviousBoughtSnacks)
                     .HasForeignKey(d => d.SnacksId)
                     .HasConstraintName("FK_AUser_Previous_Bought_Snacks_Snacks_Selling");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AuserPreviousBoughtSnacks)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_AUser_Previous_Bought_Snacks_AUser");
             });
 
             modelBuilder.Entity<AuserSeen>(entity =>
@@ -190,6 +184,8 @@ namespace BPlayServer.Models
             modelBuilder.Entity<Cinema>(entity =>
             {
                 entity.Property(e => e.CinemaId).HasColumnName("CinemaID");
+
+                entity.Property(e => e.CinemaName).HasMaxLength(100);
 
                 entity.Property(e => e.MovieId).HasColumnName("MovieID");
 
@@ -258,8 +254,13 @@ namespace BPlayServer.Models
                     .HasForeignKey(d => d.MovieId)
                     .HasConstraintName("FK_Reservation_AMovie");
 
+                entity.HasOne(d => d.Seats)
+                    .WithMany(p => p.Reservation)
+                    .HasForeignKey(d => d.SeatsId)
+                    .HasConstraintName("FK_Reservation_Seats");
+
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.ReservationNavigation)
+                    .WithMany(p => p.Reservation)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK_Reservation_AUser");
             });

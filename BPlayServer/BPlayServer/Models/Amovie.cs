@@ -5,7 +5,6 @@ namespace BPlayServer.Models
 {
     public partial class Amovie
     {
-
         public Amovie()
         {
             AuserSeen = new HashSet<AuserSeen>();

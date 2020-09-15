@@ -7,8 +7,9 @@ namespace BPlayServer.Models
     {
         public Auser()
         {
+            AuserPreviousBoughtSnacks = new HashSet<AuserPreviousBoughtSnacks>();
             AuserSeen = new HashSet<AuserSeen>();
-            ReservationNavigation = new HashSet<Reservation>();
+            Reservation = new HashSet<Reservation>();
         }
 
         public int UserId { get; set; }
@@ -19,10 +20,9 @@ namespace BPlayServer.Models
         public int? ReservationId { get; set; }
         public int? AuserTypeId { get; set; }
 
-        public virtual AuserPreviousBoughtSnacks AuserPbs { get; set; }
         public virtual AuserType AuserType { get; set; }
-        public virtual Reservation Reservation { get; set; }
+        public virtual ICollection<AuserPreviousBoughtSnacks> AuserPreviousBoughtSnacks { get; set; }
         public virtual ICollection<AuserSeen> AuserSeen { get; set; }
-        public virtual ICollection<Reservation> ReservationNavigation { get; set; }
+        public virtual ICollection<Reservation> Reservation { get; set; }
     }
 }

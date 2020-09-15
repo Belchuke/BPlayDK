@@ -15,6 +15,7 @@ namespace BPlayServer.Models
         public int? MovieId { get; set; }
         public int? MoviePlayingId { get; set; }
         public int? AmountOfSeats { get; set; }
+        public string CinemaName { get; set; }
 
         public virtual Amovie Movie { get; set; }
         public virtual MoviePlaying MoviePlaying { get; set; }
