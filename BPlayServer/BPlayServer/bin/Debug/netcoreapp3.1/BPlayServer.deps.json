@@ -32,6 +32,7 @@
           "Microsoft.Extensions.Logging.Debug": "3.1.7",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "Newtonsoft.Json": "12.0.3",
+          "WinSCP": "5.17.7",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -2399,6 +2400,17 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
+        }
+      },
+      "WinSCP/5.17.7": {
+        "runtime": {
+          "lib/netstandard2.0/WinSCPnet.dll": {
+            "assemblyVersion": "1.7.2.10640",
+            "fileVersion": "1.7.2.10640"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/WinSCPnet.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -5200,6 +5212,13 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "WinSCP/5.17.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e+309cOAcWYGeXcwqvSq5kWr3EbSsW1E8l38U2AHYBuM+4oIGjkmNFUGC1/P1uyHA9BUYJ6F2Us6RrgZhMm0sA==",
+      "path": "winscp/5.17.7",
+      "hashPath": "winscp.5.17.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
       "type": "referenceassembly",

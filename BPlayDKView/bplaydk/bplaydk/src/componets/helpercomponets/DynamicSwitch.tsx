@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 
 interface route {
@@ -14,7 +14,7 @@ interface props {
 
 
 const DynamicSwitch = (props: props)  => {
-    let found = props.routes.find(x => x.name == props.current);
+    let found = props.routes.find(x => x.name === props.current);
 
     if (found && found.component) {return found.component};
 

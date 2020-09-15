@@ -24,6 +24,14 @@ namespace BPlayServer.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Amovie>>> GetAmovie()
         {
+                var files = await _context.Amovie.ToListAsync();
+            if (files.Count == 0)
+            {
+                var getMovies = FileDBHandler.getMoviesFromDB();
+                _context.Amovie.AddRange(getMovies);
+                _context.SaveChanges();
+            }
+
             return await _context.Amovie.ToListAsync();
         }
 

@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import '../../resources/globalstyles/bodystyle.css';
 import '../../resources/globalstyles/login&createStyles.css';
-import { IAuser } from "../../interfaces/auserinterface";
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
@@ -66,30 +62,6 @@ function Create()
     password: string
   }
 
-  const [jsonResult, setJsonResult] = useState<auser>({
-    id: 0,
-    email: "",
-    password: ""
-  });
-
-
-  function onResponse(rep:string)
-  {
-    setpostresult(rep);
-
-    if (rep != "User allready exists")
-    {
-      alert("User created");
-      window.history.go(-1);
-    }
-    
-    else
-    {
-      alert("user allready exist");
-    }
-  }
-
-  const [postresult, setpostresult] = useState<string>("");
 
   function createUser()
   {
@@ -109,7 +81,7 @@ function Create()
         }).then(rep => {
 
           console.log(rep.data);
-          if (rep.data == "User Allready exist")
+          if (rep.data === "User Allready exist")
           {
             alert("Account allready exist");
           }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rVFFYph0bvspkoAdnRSVugEDKmSVNXuMNLap9YhRrSUrh3gEIcUQN/UxsPQ27rNdbXRZQBwfhya30tzOMBiHvQ==",
+  "dgSpecHash": "Y+9uRwH/kFaWQUj3OJbn3HQekcvDh7hWU74GJoUgIk37mNr0CeWBQcZHGOdjhcCYYYr/LCuM2b0GbVPpmehnGA==",
   "success": true,
   "projectFilePath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj",
   "expectedPackageFiles": [
@@ -173,7 +173,8 @@
     "C:\\Users\\jcbab\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\jcbab\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\jcbab\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\jcbab\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\jcbab\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\jcbab\\.nuget\\packages\\winscp\\5.17.7\\winscp.5.17.7.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,4 +1,7 @@
-
+body{
+    background: rgb(30,0,40);
+    background: linear-gradient(180deg, rgba(30,0,40,1) 0%, rgba(71,1,116,1) 80%);
+}
 .centered {
     position: absolute;
     width: 600px;

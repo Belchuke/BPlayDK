@@ -2755,6 +2755,18 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "WinSCP/5.17.7": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/WinSCPnet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WinSCPnet.dll": {}
+        },
+        "build": {
+          "build/WinSCP.targets": {}
+        }
       }
     }
   },
@@ -8838,6 +8850,23 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "WinSCP/5.17.7": {
+      "sha512": "e+309cOAcWYGeXcwqvSq5kWr3EbSsW1E8l38U2AHYBuM+4oIGjkmNFUGC1/P1uyHA9BUYJ6F2Us6RrgZhMm0sA==",
+      "type": "package",
+      "path": "winscp/5.17.7",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/WinSCP.targets",
+        "lib/net40/WinSCPnet.dll",
+        "lib/netstandard2.0/WinSCPnet.dll",
+        "tools/WinSCP.exe",
+        "winscp.5.17.7.nupkg.sha512",
+        "winscp.nuspec",
+        "winscp64.png"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -8849,7 +8878,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.7",
       "Microsoft.Extensions.Logging.Debug >= 3.1.7",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "Newtonsoft.Json >= 12.0.3"
+      "Newtonsoft.Json >= 12.0.3",
+      "WinSCP >= 5.17.7"
     ]
   },
   "packageFolders": {
@@ -8929,6 +8959,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[12.0.3, )"
+          },
+          "WinSCP": {
+            "target": "Package",
+            "version": "[5.17.7, )"
           }
         },
         "imports": [

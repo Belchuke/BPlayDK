@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
 } from "react-router-dom";
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import '../../resources/globalstyles/bodystyle.css';
 import '../../resources/globalstyles/login&createStyles.css';
-import { IAuser } from "../../interfaces/auserinterface";
 import { useHistory } from "react-router-dom";
+import {contextComponet} from '../../componets/contextComponet/contextComponet';
+
+
 
 function Login()
 {
@@ -19,13 +18,6 @@ function Login()
     passwordInput: ""
   })
   
-  const [jsonResult, setJsonResult] = useState<IAuser>({
-    id: 0,
-    email: "",
-    username: "",
-    password: ""  
-  });
-
 
    //#region Inputhandlers
   // Input handler which uses state
@@ -45,46 +37,31 @@ function Login()
 
   //#endregion
   const history = useHistory();
+  const [getUser, setUser] = useContext(contextComponet);
 
   function tryLogin()
   {
-  /*  axios({
-      method: 'get', url: 'https://localhost:44398/api/ausers/doesuserexist', {data}
-      }}).then(rep => {
-      console.log(rep);
-      if (rep.data == "Does Not Exist")
-        alert("Incorrect email or password");
-      else {
-        history.push("/login");
-      }
-    })*/
-    let passwordToSeach = inputs.passwordInput;
-    let emailToSearch = inputs.emailInput;
     try {
-     /* const res = axios.get("https://localhost:44398/api/ausers",
-        {
-          data:
-          {
-            "Email": inputs.emailInput,
-            "Password": inputs.passwordInput
-          }
-        }) */
       axios.get("https://localhost:44398/api/ausers", {
         params: {
           Email: inputs.emailInput,
           Password: inputs.passwordInput,
         }
       }).then(response => {
-        if (response.data == "Exist")
+        if (response.data.includes('Exist'))
         {
-          history.push("/login");
+          setUser(response.data);
+          history.push({
+            pathname: '/login',
+          });
         }
-        else if (response.data == "Does Not Exist")
+        else if (response.data === "Does Not Exist")
         {
           alert("Try again with diffrent email or password");
         }
         else
         {
+          console.log(response.data);
           alert("Error with server");
         }
       });

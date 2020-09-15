@@ -68,7 +68,11 @@ function Login() {
                 }
             }).then(function (response) {
                 if (response.data == "Exist") {
-                    history.push("/login");
+                    history.push({
+                        pathname: '/login',
+                        search: '?query=abc',
+                        state: { detail: response.data }
+                    });
                 }
                 else if (response.data == "Does Not Exist") {
                     alert("Try again with diffrent email or password");

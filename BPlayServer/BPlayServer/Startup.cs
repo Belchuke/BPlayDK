@@ -37,7 +37,6 @@ namespace BPlayServer
                     builder.AllowAnyOrigin();
                     builder.AllowAnyMethod();
                     builder.AllowAnyHeader();
-                    // builder.WithOrigins("https://localhost:44337");
                 });
             });
             services.AddControllers();
