@@ -79,6 +79,13 @@ namespace BPlayServer.Controllers
         [HttpPost]
         public async Task<ActionResult<Auser>> PostAuser(Auser auser)
         {
+            if (_context.AuserType.Count() == 0)
+            {
+                _context.AuserType.Add(new AuserType() { UserType = "User" });
+                _context.AuserType.Add(new AuserType() { UserType = "Admin" });
+                _context.SaveChanges();
+            }
+
             _context.Auser.Add(auser);
             await _context.SaveChangesAsync();
 

@@ -232,12 +232,7 @@ function Maincomponet() {
             <p id="MovieInformationPTags">• Movie Runtime: {GetMovieInfo?.runtime}</p>
             <p id="MovieInformationPTags">• IMDB Rating: {GetMovieInfo?.imdbRating}</p>
             <p id="MovieInformationPTags">• Plot: {GetMovieInfo?.plot}</p>
-
-            
-           
-          </div>
-
-          
+          </div>       
         </div>)
     },
   
