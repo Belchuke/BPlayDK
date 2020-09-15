@@ -20,8 +20,26 @@ namespace BPlayServer.Controllers
             _context = context;
         }
 
-        // GET: api/Ausers
+
         [HttpGet]
+        public async Task<ActionResult<Auser>> CheckIfUserExist([FromQuery] Auser auser)
+        {
+            var list = await _context.Auser.ToListAsync();
+            var exist = list.FirstOrDefault(fuser => fuser.Email == auser.Email && fuser.Password == auser.Password);
+            if (exist != null)
+            {
+                return Ok("Exist " + exist.UserId + " " + exist.AuserTypeId);
+            }
+            else
+            {
+                return Ok("Does Not Exist");
+            }
+
+
+        }
+
+        // GET: api/Ausers
+        [HttpGet("getallUsers")]
         public async Task<ActionResult<IEnumerable<Auser>>> GetAuser()
         {
             return await _context.Auser.ToListAsync();
