@@ -2,7 +2,7 @@ import React from 'react';
 import { IAMovie } from '../../interfaces/IAMovie';
 import './AMovieListItem.css';
 
-const AMovieListItem = (param: IAMovie) => {
+const AMovieListItem = (param: IAMovie) => {  
 
   
   return (

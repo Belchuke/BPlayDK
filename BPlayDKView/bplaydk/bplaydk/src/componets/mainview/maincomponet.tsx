@@ -138,7 +138,10 @@ function Maincomponet() {
           key={testItems.movieId}></AmovieListItem>
           </li>));
         });
-    
+        
+      axios.get('').then(reponse => {
+          
+      });
     
 
   }, []);
@@ -167,7 +170,7 @@ function Maincomponet() {
     {
       name: "Movies",
       component: (
-        <div id="AllMoviesScrollDiv">
+        <div id="AllViewsScroll">
           <h3 id="AMovieTypeRowIdentitier">AllMovies</h3>
           <ul id="AMovieItem">
           {AllMovies}
@@ -190,9 +193,8 @@ function Maincomponet() {
     {
       name: "My Reservations",
       component: (
-        <div>
-          <h1 id="ViewID">My Reservations</h1>
-          <p>So you can pass down new elements!</p>
+        <div id="AllViewsScroll">
+          
         </div>)
     },
     {

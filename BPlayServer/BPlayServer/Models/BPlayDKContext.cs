@@ -46,49 +46,13 @@ namespace BPlayServer.Models
 
                 entity.Property(e => e.MovieId).HasColumnName("MovieID");
 
-                entity.Property(e => e.Actors).HasMaxLength(100);
+                entity.Property(e => e.ImdbId).HasColumnName("imdbID");
 
-                entity.Property(e => e.Country).HasMaxLength(100);
+                entity.Property(e => e.ImdbRating).HasColumnName("imdbRating");
 
-                entity.Property(e => e.Director).HasMaxLength(100);
+                entity.Property(e => e.ImdbVotes).HasColumnName("imdbVotes");
 
-                entity.Property(e => e.Genre).HasMaxLength(100);
-
-                entity.Property(e => e.ImdbId)
-                    .HasColumnName("imdbID")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.ImdbRating)
-                    .HasColumnName("imdbRating")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.ImdbVotes)
-                    .HasColumnName("imdbVotes")
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.Metascore).HasMaxLength(200);
-
-                entity.Property(e => e.MovieLanguage).HasMaxLength(100);
-
-                entity.Property(e => e.MovieType).HasMaxLength(100);
-
-                entity.Property(e => e.MovieYear).HasMaxLength(100);
-
-                entity.Property(e => e.Poster).HasMaxLength(100);
-
-                entity.Property(e => e.Released).HasMaxLength(100);
-
-                entity.Property(e => e.Response).HasMaxLength(100);
-
-                entity.Property(e => e.Runtime)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.ServerPath).HasMaxLength(200);
-
-                entity.Property(e => e.Title).HasMaxLength(100);
-
-                entity.Property(e => e.Writer).HasMaxLength(100);
+                entity.Property(e => e.Runtime).IsRequired();
             });
 
             modelBuilder.Entity<Auser>(entity =>

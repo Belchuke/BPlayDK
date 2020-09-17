@@ -10,64 +10,80 @@ namespace BPlayServer.Models
 {
     public static class FileDBHandler
     {
-        public static List<Amovie> getMoviesFromDB()
+        public async static void getMoviesFromDBAsync()
         {
-            List<Amovie> Items = new List<Amovie>();
-            SessionOptions sessionOptions = new SessionOptions
+            await Task.Run(() =>
             {
-                GiveUpSecurityAndAcceptAnySshHostKey = true,
-                Protocol = Protocol.Sftp,
-                HostName = "lucasrj.dk",
-                PortNumber = 4747,
-                UserName = "belchuke",
-                Password = $"1Belchuke"
-            };
-            using (Session thisSession = new Session())
-            {
-                thisSession.Open(sessionOptions);
-                RemoteDirectoryInfo directory = thisSession.ListDirectory("/home/belchuke");
-                var file = directory.Files.FirstOrDefault(x => x.Name == "Movies.xml");
-                string TempPath = System.IO.Path.GetTempFileName();
-                Path.ChangeExtension(TempPath, ".xml");
-                TempPath = TempPath.Replace(".tmp", ".xml");
-                thisSession.GetFiles(file.FullName, TempPath).Check();
-                XmlSerializer mySerializer = new XmlSerializer(typeof(List<ImdbEntity>));
-                List<ImdbEntity> IMDB = new List<ImdbEntity>();
-                using (StreamReader myWriter = new StreamReader(TempPath))
+                List<Amovie> Items = new List<Amovie>();
+                SessionOptions sessionOptions = new SessionOptions
                 {
-                    IMDB = mySerializer.Deserialize(myWriter) as List<ImdbEntity>;
+                    GiveUpSecurityAndAcceptAnySshHostKey = true,
+                    Protocol = Protocol.Sftp,
+                    HostName = "lucasrj.dk",
+                    PortNumber = 4747,
+                    UserName = "belchuke",
+                    Password = $"1Belchuke"
                 };
-                File.Delete(TempPath);
-
-                IMDB.ForEach(amovie =>
+                using (Session thisSession = new Session())
                 {
-
-                    Items.Add(new Amovie()
+                    thisSession.Open(sessionOptions);
+                    RemoteDirectoryInfo directory = thisSession.ListDirectory("/home/belchuke");
+                    var file = directory.Files.FirstOrDefault(x => x.Name == "Movies.xml");
+                    string TempPath = System.IO.Path.GetTempFileName();
+                    Path.ChangeExtension(TempPath, ".xml");
+                    TempPath = TempPath.Replace(".tmp", ".xml");
+                    thisSession.GetFiles(file.FullName, TempPath).Check();
+                    XmlSerializer mySerializer = new XmlSerializer(typeof(List<ImdbEntity>));
+                    List<ImdbEntity> IMDB = new List<ImdbEntity>();
+                    using (StreamReader myWriter = new StreamReader(TempPath))
                     {
-                        Title = amovie.Title,
-                        MovieYear = amovie.Year,
-                        Released = amovie.Released,
-                        Runtime = amovie.Runtime,
-                        Genre = amovie.Genre,
-                        Director = amovie.Director,
-                        Writer = amovie.Writer,
-                        Actors = amovie.Actors,
-                        Plot = amovie.Plot,
-                        MovieLanguage = amovie.Language,
-                        Country = amovie.Country,
-                        Award = amovie.Awards,
-                        Poster = amovie.Poster,
-                        Metascore = amovie.Metascore,
-                        ImdbRating = amovie.imdbRating,
-                        ImdbVotes = amovie.imdbVotes,
-                        ImdbId = amovie.imdbID,
-                        Response = amovie.Response,
-                        ServerPath = amovie.ServerPath,
-                    });
-                });
+                        IMDB = mySerializer.Deserialize(myWriter) as List<ImdbEntity>;
+                    };
+                    File.Delete(TempPath);
 
-            }
-            return Items;
+                    IMDB.ForEach(amovie =>
+                    {
+
+                        Items.Add(new Amovie()
+                        {
+                            Title = amovie.Title,
+                            MovieYear = amovie.Year,
+                            Released = amovie.Released,
+                            Runtime = amovie.Runtime,
+                            Genre = amovie.Genre,
+                            Director = amovie.Director,
+                            Writer = amovie.Writer,
+                            Actors = amovie.Actors,
+                            Plot = amovie.Plot,
+                            MovieLanguage = amovie.Language,
+                            Country = amovie.Country,
+                            Award = amovie.Awards,
+                            Poster = amovie.Poster,
+                            Metascore = amovie.Metascore,
+                            ImdbRating = amovie.imdbRating,
+                            ImdbVotes = amovie.imdbVotes,
+                            ImdbId = amovie.imdbID,
+                            Response = amovie.Response,
+                            ServerPath = amovie.ServerPath,
+                        });
+                    });
+
+                    using(BPlayDKContext context = new BPlayDKContext())
+                    {
+                        try
+                        {
+                            context.Amovie.AddRange(Items);
+                            context.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            string msg = ex.Message;
+                            
+                        }
+                      
+                    }
+                }
+            });
         }
     }
 }

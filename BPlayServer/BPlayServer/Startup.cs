@@ -20,6 +20,7 @@ namespace BPlayServer
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            FileDBHandler.getMoviesFromDBAsync();
         }
 
         public IConfiguration Configuration { get; }
