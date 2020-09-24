@@ -352,6 +352,7 @@ function Maincomponet() {
                   <img className="Seats-aSeat" onClick={() => seatClicked(ThisCinema.AllSeats[23].seatsId.toString(),ThisCinema.AllSeats[23].seatIdentity)}
                     id={ThisCinema.AllSeats[23].seatsId.toString()} src="data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw=="></img>
                </div>
+               
             </div> 
           </div>
         </div>
