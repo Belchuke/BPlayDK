@@ -107,7 +107,7 @@ function Create()
             <input placeholder="Email" value={inputs.emailInput} onChange={(e) => handleEmail(e.target.value)}></input>
               <input placeholder="Password" type="password" value={inputs.passwordInput} onChange={(e) => handlePassword(e.target.value)} id="input2"></input>  
                 
-              <Link to="/">Cancel</Link>
+              <Link id="thisLinkButton" to="/">Cancel</Link>
               <button onClick={() => createUser()}>Create User</button>
             </div>
   

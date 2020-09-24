@@ -132,7 +132,9 @@ ul {
     overflow-y: auto;
 }
 
-
+#AllViewsNoScroll{
+    overflow-y: hidden;
+}
 
 #topbar{
     margin-left: 212px;
@@ -167,7 +169,7 @@ h2{
 #AMovieTypeRowIdentitier{
     margin-left: 20px;
     font-size: medium;
-    color: whitesmoke;
+    color: #7c43bd;
 }
 
 #AmovieViewInfo{
@@ -175,16 +177,13 @@ h2{
   flex-direction: row;
   margin-top: 2%;
   margin-left: 2%;
-  margin-right: 10%;
 }
 
 #posterViewInfo{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 400;
-    height: 300;
-    margin-bottom: 20%;
+    width: 500px;
 }
 
 
@@ -204,9 +203,154 @@ h2{
     color: black;
     font-size: 125%;
     margin-left: 0%;
+    margin-right: 10%;
+  
 }
 
 #MovieInformationShortInformations{
     display: flex;
     flex-direction: row;
+}
+
+.btn {
+    position: relative;
+  
+    display: block;
+    margin-top: 4%;
+    padding: 0;
+  
+    overflow: hidden;
+  
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    
+    background-color: #6746c3;
+    color: #ecf0f1;
+    
+    transition: background-color .3s;
+ }
+  
+.btn:hover, .btn:focus {
+    background-color: #7953d2;
+}
+  
+.btn > * {
+    position: relative;
+}
+  
+.btn span {
+    display: block;
+    padding: 12px 24px;
+}
+  
+.btn:before {
+    content: "";
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    display: block;
+    width: 0;
+    padding-top: 0;
+      
+    border-radius: 100%;
+    
+    background-color: rgba(236, 240, 241, .3);
+    
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+  
+.btn:active:before {
+    width: 120%;
+    padding-top: 120%;
+    
+    transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.Cinema{
+ width: 200vh;
+ height: 91vh;
+ overflow-y: hidden;
+ overflow-x: hidden;
+ display: flex;
+}
+
+.Cinema-information
+{
+    width: 20%;
+    height: 100%;
+    background-color: #550f64;
+}
+.Cinema-Container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+.Cinema-information-container
+{
+    margin-top: 10%;
+}
+.screen{
+   margin-top: 20px;
+   border-top: 5px solid black;
+   margin-left: 19%;
+   margin-right: 19%;
+}
+
+.screen p{
+    text-align: center;
+    font-size: medium;
+}
+
+.Seats{
+    margin-top: 100px;
+}
+
+.Seats p{
+    text-align: center;
+    font-size: medium;
+}
+
+.Seats_Container{
+    margin-left: 20.5%;
+}
+
+.Seats-aSeat{
+    background-image: url("../../resources/Images/seat.png");
+    background-size: 100px 100px;
+    margin-left: 5%;
+    height: 100px;
+    width: 100px;
+}
+
+.Seats-aSeat-First{
+    margin-left: 0px;
+}
+.Seats-aSeat:hover{
+    background-image: url("../../resources/Images/seat-hover.png");
+}
+
+#Row_1{
+    margin-top: 20px;
+}
+
+#Row_2{
+    margin-top: 20px;
+}
+
+#Row_3{
+    margin-top: 20px;
+}
+
+#Row_4{
+    margin-top: 20px;
 }

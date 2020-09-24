@@ -13,9 +13,9 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class ReservationsController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public ReservationsController(BPlayDKContext context)
+        public ReservationsController(masterContext context)
         {
             _context = context;
         }

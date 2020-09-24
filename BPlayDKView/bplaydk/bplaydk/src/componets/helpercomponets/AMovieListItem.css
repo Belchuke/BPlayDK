@@ -5,9 +5,10 @@
 
 .container{
     margin-left: 5px;
-    border: 2px solid #8e24aa;  
+    border: 1px solid #673AB7;  
     width:  100px;
     height: 145px;
+    padding: 1px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     margin-bottom: 10px;
     object-fit: cover;

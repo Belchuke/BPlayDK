@@ -13,9 +13,9 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class BoughtSnacksController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public BoughtSnacksController(BPlayDKContext context)
+        public BoughtSnacksController(masterContext context)
         {
             _context = context;
         }

@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj": {}
+    "C:\\Users\\Belchuke\\Documents\\GitHub\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj": {
+    "C:\\Users\\Belchuke\\Documents\\GitHub\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj",
+        "projectUniqueName": "C:\\Users\\Belchuke\\Documents\\GitHub\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj",
         "projectName": "BPlayServer",
-        "projectPath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj",
-        "packagesPath": "C:\\Users\\jcbab\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jcbab\\Desktop\\BPlayDK\\BPlayDK\\BPlayServer\\BPlayServer\\obj\\",
+        "projectPath": "C:\\Users\\Belchuke\\Documents\\GitHub\\BPlayDK\\BPlayServer\\BPlayServer\\BPlayServer.csproj",
+        "packagesPath": "C:\\Users\\Belchuke\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Belchuke\\Documents\\GitHub\\BPlayDK\\BPlayServer\\BPlayServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jcbab\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Belchuke\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -42,6 +43,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.8, )"
@@ -101,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,9 +13,9 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class AuserSeensController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public AuserSeensController(BPlayDKContext context)
+        public AuserSeensController(masterContext context)
         {
             _context = context;
         }

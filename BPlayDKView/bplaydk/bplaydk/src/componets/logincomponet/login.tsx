@@ -51,6 +51,7 @@ function Login()
         if (response.data.includes('Exist'))
         {
           setUser(response.data);
+          
           history.push({
             pathname: '/login',
           });
@@ -84,7 +85,7 @@ function Login()
           <div>
             <input placeholder="Email" value={inputs.emailInput} onChange={(e) => handleEmail(e.target.value)}></input>
             <input placeholder="Password" type="password" value={inputs.passwordInput} onChange={(e) => handlePassword(e.target.value)} id="input2"></input>   
-            <Link to="/createUser">Create Account
+            <Link id="thisLinkButton" to="/createUser">Create Account
             </Link>
             <button onClick={() => tryLogin()}>Log In</button>
           </div>

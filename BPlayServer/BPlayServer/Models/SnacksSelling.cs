@@ -12,6 +12,7 @@ namespace BPlayServer.Models
 
         public int SnackId { get; set; }
         public string SnacksName { get; set; }
+        public string SnackImg { get; set; }
 
         public virtual ICollection<AuserPreviousBoughtSnacks> AuserPreviousBoughtSnacks { get; set; }
     }

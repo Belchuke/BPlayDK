@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BPlayServer.Models;
+using WinSCP;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace BPlayServer.Controllers
 {
@@ -13,11 +16,13 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class AmoviesController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public AmoviesController(BPlayDKContext context)
+        public AmoviesController(masterContext context)
         {
             _context = context;
+            if (_context.Amovie.Count() == 0)
+                FileDBHandler.GetMoviesFromDB(_context);
         }
 
         // GET: api/Amovies

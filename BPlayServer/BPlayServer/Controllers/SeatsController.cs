@@ -13,9 +13,9 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class SeatsController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public SeatsController(BPlayDKContext context)
+        public SeatsController(masterContext context)
         {
             _context = context;
         }
@@ -25,6 +25,21 @@ namespace BPlayServer.Controllers
         public async Task<ActionResult<IEnumerable<Seats>>> GetSeats()
         {
             return await _context.Seats.ToListAsync();
+        }
+
+        [HttpGet("cinema/{id}")]
+        public ActionResult<IEnumerable<Seats>> GetSeatsBasedOnCinema(int ID)
+        {
+            List<Seats> allSeats = _context.Seats.ToList();
+            List<Seats> seatsToReturn = new List<Seats>();
+            foreach (var x in allSeats)
+            {
+                if (x.CinemaId == ID)
+                {
+                    seatsToReturn.Add(x);
+                }
+            }
+            return seatsToReturn;
         }
 
         // GET: api/Seats/5

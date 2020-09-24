@@ -13,9 +13,9 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class AusersController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public AusersController(BPlayDKContext context)
+        public AusersController(masterContext context)
         {
             _context = context;
         }
@@ -24,16 +24,25 @@ namespace BPlayServer.Controllers
         [HttpGet]
         public async Task<ActionResult<Auser>> CheckIfUserExist([FromQuery] Auser auser)
         {
-            var list = await _context.Auser.ToListAsync();
-            var exist = list.FirstOrDefault(fuser => fuser.Email == auser.Email && fuser.Password == auser.Password);
-            if (exist != null)
+            if (auser.Password != null)
             {
-                return Ok("Exist " + exist.UserId + " " + exist.AuserTypeId);
+                var list = await _context.Auser.ToListAsync();
+                string md5 = MD5Handler.GetMD5Hash(auser.Password);
+                var exist = list.FirstOrDefault(fuser => fuser.Email == auser.Email && fuser.Password == md5);
+                if (exist != null)
+                {
+                    return Ok("Exist " + exist.UserId + " " + exist.AuserTypeId);
+                }
+                else
+                {
+                    return Ok("Does Not Exist");
+                }
             }
             else
             {
-                return Ok("Does Not Exist");
+                return Ok("error");
             }
+
 
 
         }
@@ -103,7 +112,8 @@ namespace BPlayServer.Controllers
                 _context.AuserType.Add(new AuserType() { UserType = "Admin" });
                 _context.SaveChanges();
             }
-
+            string password = MD5Handler.GetMD5Hash(auser.Password);
+            auser.Password = password;
             _context.Auser.Add(auser);
             await _context.SaveChangesAsync();
 

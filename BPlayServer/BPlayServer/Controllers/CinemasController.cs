@@ -13,9 +13,9 @@ namespace BPlayServer.Controllers
     [ApiController]
     public class CinemasController : ControllerBase
     {
-        private readonly BPlayDKContext _context;
+        private readonly masterContext _context;
 
-        public CinemasController(BPlayDKContext context)
+        public CinemasController(masterContext context)
         {
             _context = context;
         }

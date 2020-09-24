@@ -57,7 +57,7 @@ input{
     margin-top: 4%;
 }
 
-a{
+#thisLinkButton{
     margin: 20px;
     margin-left: 18px;
     background-color: #690ca4;
